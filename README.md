@@ -1,5 +1,4 @@
 # data-engineering-capstone
-# data-engineering-capstone-project
 # Project Title: Customer Insights and Automation using PySpark, Airflow, and GCP
 
 ## Table of Contents
@@ -12,11 +11,10 @@
 - [Data Processing with PySpark](#data-processing-with-pyspark)
 - [Orchestration with Airflow](#orchestration-with-airflow)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Project Overview
 
-This project focuses on developing a scalable and automated data processing pipeline using PySpark, Airflow, and Google Cloud Platform (GCP). The primary goal is to process large datasets to generate customer insights, such as segmentation, churn prediction, and retention analysis, and automate the orchestration of these tasks using Airflow on Google Cloud Composer.
+This project aims to develop an automated daily insights system for an e-commerce website, focusing on analyzing user behavior to enhance the customer experience, reduce churn, and increase lead conversion. The insights generated will help the sales and marketing teams target the right customers with personalized incentives, leading to improved customer retention, higher conversion rates, and increased sales and revenue.
 
 ## Repository Structure
 
@@ -42,14 +40,15 @@ Before you begin, ensure you have the following tools installed:
 - PySpark
 - Google Cloud SDK
 - Apache Airflow
+- Java
 
 ## Getting Started
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-repository/project-name.git
-cd project-name
+git clone https://github.com/Devops1964/data-engineering-capstone.git
+cd data-engineering-capstone
 ```
 ### 2. Set Up Your Environment
 Create and activate the Conda environment using the provided capstone.yml:
@@ -62,7 +61,7 @@ Authenticate and configure access to your GCP account via service accounts:
 
 ```bash
 gcloud auth login
-gcloud config set project your-gcp-project-id
+gcloud config set data-eng-capstone-434311
 ```
 
 ## CI/CD Pipeline
@@ -86,6 +85,7 @@ git push origin feature-branch
 3. Create a Pull Request (PR) and merge it to main after review.
 
 4. GitHub Actions will automatically run the CI pipeline.
+
 ### Example Workflow: Hello World
 
 An example GitHub Actions workflow is provided to print "Hello World":
@@ -93,17 +93,42 @@ An example GitHub Actions workflow is provided to print "Hello World":
 ```yaml
 name: Hello World Workflow
 
-on: [push]
-
+on:
+  push:
+    branches:
+      - main  # Run only on pushes to the 'main' branch
+      
 jobs:
-  hello-world:
+  say-hello:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-      - name: Run Hello World
-        run: echo "Hello World"
+    - name: Print Hello World
+      run: echo "Hello, World!"
 ```
 
-This Markdown code includes the example GitHub Actions workflow for printing "Hello World."
+## Data Processing with PySpark
+
+In Week 2, we focused on processing and analyzing customer data using PySpark. The steps included:
+
+- **Data Ingestion**: Reading data from Google Cloud Storage.
+- **Data Transformation**: Performing customer segmentation and churn analysis.
+- **Data Storage**: Writing results back to a separate GCS bucket.
+
+you can check the processing script in this [data-analysis.ipynb file](https://github.com/Devops1964/data-engineering-capstone/blob/d5b24fe2ff71a3908f0c33a45b4cb5d3e7fbd146/data-analysis.ipynb)
+
+## Orchestration with Airflow
+
+In Weeks 3 & 4, we implemented task orchestration using Apache Airflow on Google Cloud Composer. The pipeline is scheduled to run daily at 10:00 AM and automates the data processing tasks developed in Week 2.
+
+you can check the Orchestration with Airflow in this [ecommerce_insights_dag.py file](https://github.com/Devops1964/data-engineering-capstone/blob/d5b24fe2ff71a3908f0c33a45b4cb5d3e7fbd146/dags/ecommerce_insights_dag.py)
+
+## Contributing
+
+We welcome contributions! Please follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Push the branch (`git push origin feature-branch`).
+5. Open a Pull Request.
 
