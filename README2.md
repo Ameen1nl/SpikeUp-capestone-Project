@@ -1,2 +1,0 @@
-# data-engineering-capstone
-erkjbthrbg
