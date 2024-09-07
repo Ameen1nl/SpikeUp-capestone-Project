@@ -34,7 +34,7 @@ def calculate_highest_spend(df: DataFrame) -> DataFrame:
     """
 
     Spend_by_City = (
-        df.groupBy("City")
+        df.groupBy("City", "SpendingCategory")
           .agg(
               # Age calculations
               sf.round(sf.mean("age"), 1).alias("Average_age"),
