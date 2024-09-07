@@ -112,7 +112,7 @@ default_args = {
 
 # Define the DAG
 with DAG(
-    dag_id="insights_dag_2",
+    dag_id="insights_dag_1",
     start_date=datetime(2024, 7, 14),
     schedule_interval="0 10 * * *",  # Daily interval at 10am
     catchup=False,
