@@ -82,7 +82,7 @@ def etl_with_spark():
             .config("spark.sql.repl.eagerEval.enabled", True) \
             .getOrCreate()
 
-        file_path = f"gs://{GCS_BUCKET}/customers.csv/"
+        file_path = f"gs://{GCS_BUCKET}/customers/gs://ecommerce-customer/customers/part-00000-7ce1f5a5-6364-466d-8d0e-28a62a7e7052-c000.csv"
         
         # Read data from GCS
         customer_df = read_data(spark=spark, file_path=file_path)
@@ -112,7 +112,7 @@ default_args = {
 
 # Define the DAG
 with DAG(
-    dag_id="insights_dag_2",
+    dag_id="insights_dag_1",
     start_date=datetime(2024, 7, 14),
     schedule_interval="0 10 * * *",  # Daily interval at 10am
     catchup=False,
