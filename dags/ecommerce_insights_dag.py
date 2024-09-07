@@ -82,7 +82,7 @@ def etl_with_spark():
             .config("spark.sql.repl.eagerEval.enabled", True) \
             .getOrCreate()
 
-        file_path = f"gs://{GCS_BUCKET}/e-commerce-customer-behavior.csv"
+        file_path = f"gs://{GCS_BUCKET}/customers.csv"
         
         # Read data from GCS
         customer_df = read_data(spark=spark, file_path=file_path)
