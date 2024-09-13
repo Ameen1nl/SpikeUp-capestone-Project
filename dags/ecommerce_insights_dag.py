@@ -22,7 +22,7 @@ def read_data(spark: SparkSession, file_path: str) -> DataFrame:
 
 def calculate_highest_spend(df: DataFrame) -> DataFrame:
     """
-    Calculates the average age, average items purchased, average spend and sun spend grouped by city
+    Calculates the average age, average items purchased, average spend and sun spend grouped by city, SpendingCategory
     and sorts the results by the average spend in descending order.
     
     Args:
@@ -68,7 +68,7 @@ def etl_with_spark():
     """
     Executes the ETL process using PySpark:
     1. Reads customer data from a CSV file in Google Cloud Storage.
-    2. Performs data transformations to calculate average statistics by city, gender, and membership type.
+    2. Performs data transformations to calculate average statistics by city and SpendingCategory.
     3. Writes the transformed data back to Google Cloud Storage.
     
     The function initializes a Spark session, processes the data, and ensures proper resource cleanup.
@@ -112,7 +112,7 @@ default_args = {
 
 # Define the DAG
 with DAG(
-    dag_id="insights_dag_11",
+    dag_id="insights_dag_1",
     start_date=datetime(2024, 7, 14),
     schedule_interval="0 10 * * *",  # Daily interval at 10am
     catchup=False,
