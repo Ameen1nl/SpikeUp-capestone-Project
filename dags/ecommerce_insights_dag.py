@@ -30,7 +30,7 @@ def calculate_highest_spend(df: DataFrame) -> DataFrame:
                         Age, Items Purchased, and Total Spend.
     
     Returns:
-        DataFrame: A PySpark DataFrame containing aggregated statistics, sorted by Average_spend in descending order.
+        DataFrame   : A PySpark DataFrame containing aggregated statistics, sorted by Average_spend in descending order.
     """
 
     Spend_by_City = (
